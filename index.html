@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone - 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#21808D">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-logo">
+            <div class="instagram-logo"></div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app hidden">
+        <!-- Navigation Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="instagram-title">Instagram</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="notifications-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn" id="messages-header-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Feed -->
+            <section id="home-section" class="content-section active">
+                <!-- Stories Section -->
+                <div class="stories-container">
+                    <div class="stories-list" id="stories-list">
+                        <!-- Stories will be dynamically inserted -->
+                    </div>
+                </div>
+
+                <!-- Posts Feed -->
+                <div class="posts-container" id="posts-container">
+                    <!-- Posts will be dynamically inserted -->
+                </div>
+
+                <!-- Infinite Scroll Loader -->
+                <div class="loading-spinner" id="feed-loader">
+                    <div class="spinner"></div>
+                </div>
+            </section>
+
+            <!-- Explore Section -->
+            <section id="explore-section" class="content-section">
+                <div class="explore-header">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search" id="search-input">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="explore-grid" id="explore-grid">
+                    <!-- Explore content will be dynamically inserted -->
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages-section" class="content-section">
+                <div class="messages-header">
+                    <h2>Direct Messages</h2>
+                    <button class="btn btn--secondary" id="new-message-btn">New Message</button>
+                </div>
+                <div class="messages-list" id="messages-list">
+                    <!-- Messages will be dynamically inserted -->
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="content-section">
+                <div class="profile-header" id="profile-header">
+                    <!-- Profile content will be dynamically inserted -->
+                </div>
+                <div class="profile-posts" id="profile-posts">
+                    <!-- Profile posts grid will be dynamically inserted -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-section="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9,22 9,12 15,12 15,22"/>
+                </svg>
+            </button>
+            <button class="nav-btn" data-section="explore">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </button>
+            <button class="nav-btn" id="create-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21,15 16,10 5,21"/>
+                </svg>
+            </button>
+            <button class="nav-btn" data-section="messages">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+            </button>
+            <button class="nav-btn" data-section="profile">
+                <div class="profile-avatar-nav">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b1c7?w=32&h=32&fit=crop&crop=face" alt="Profile" class="nav-avatar">
+                </div>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Story Viewer Modal -->
+    <div id="story-modal" class="story-modal">
+        <div class="story-viewer">
+            <div class="story-header">
+                <div class="story-progress-bars" id="story-progress-bars"></div>
+                <div class="story-user-info">
+                    <img src="" alt="" class="story-avatar" id="story-avatar">
+                    <span class="story-username" id="story-username"></span>
+                    <span class="story-time" id="story-time"></span>
+                </div>
+                <button class="story-close-btn" id="story-close-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="story-content">
+                <img src="" alt="" class="story-image" id="story-image">
+                <div class="story-navigation">
+                    <button class="story-nav-btn story-prev" id="story-prev"></button>
+                    <button class="story-nav-btn story-next" id="story-next"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div id="create-modal" class="create-modal">
+        <div class="create-content">
+            <div class="create-header">
+                <button class="btn btn--secondary" id="create-cancel">Cancel</button>
+                <h3>Create new post</h3>
+                <button class="btn btn--primary" id="create-share">Share</button>
+            </div>
+            <div class="create-body">
+                <div class="image-upload-area" id="image-upload-area">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                    <p>Drag photos and videos here</p>
+                    <button class="btn btn--primary">Select from computer</button>
+                </div>
+                <div class="create-form hidden" id="create-form">
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Write a caption..." id="caption-textarea"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Add location" id="location-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="chat-modal">
+        <div class="chat-content">
+            <div class="chat-header">
+                <button class="icon-btn" id="chat-back-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <div class="chat-user-info">
+                    <img src="" alt="" class="chat-avatar" id="chat-avatar">
+                    <div class="chat-user-details">
+                        <span class="chat-username" id="chat-username"></span>
+                        <span class="chat-status" id="chat-status">Active now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be dynamically inserted -->
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" placeholder="Message..." id="chat-input">
+                <button class="send-btn" id="send-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div id="notifications-panel" class="notifications-panel">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button class="icon-btn" id="notifications-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="notifications-list" id="notifications-list">
+            <!-- Notifications will be dynamically inserted -->
+        </div>
+    </div>
+
+    <!-- Heart Animation Container -->
+    <div id="heart-animation-container" class="heart-animation-container"></div>
+
+    <!-- Post Template (Hidden) -->
+    <template id="post-template">
+        <div class="post" data-post-id="">
+            <div class="post-header">
+                <img src="" alt="" class="post-avatar">
+                <div class="post-user-info">
+                    <div class="post-username"></div>
+                    <div class="post-location"></div>
+                </div>
+                <button class="post-options">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="post-image-container">
+                <img src="" alt="Post image" class="post-image" loading="lazy">
+            </div>
+            <div class="post-actions">
+                <div class="post-actions-left">
+                    <button class="action-btn like-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </button>
+                    <button class="action-btn comment-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </button>
+                    <button class="action-btn share-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"/>
+                            <circle cx="6" cy="12" r="3"/>
+                            <circle cx="18" cy="19" r="3"/>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                        </svg>
+                    </button>
+                </div>
+                <button class="action-btn save-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="19 21 12 16 5 21 5 5 19 5 19 21"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="post-likes"></div>
+            <div class="post-caption">
+                <span class="post-caption-username"></span>
+                <span class="post-caption-text"></span>
+            </div>
+            <div class="post-comments"></div>
+            <div class="post-timestamp"></div>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>

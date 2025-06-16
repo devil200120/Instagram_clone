@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <h1>Instagram</h1>
+            </div>
+            <div class="header__search">
+                <input type="text" placeholder="Search" class="search-input">
+                <div class="search-suggestions hidden" id="searchSuggestions"></div>
+            </div>
+            <nav class="header__nav">
+                <button class="nav-icon" id="homeBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.1L21.9 12H20V21H15V16H9V21H4V12H2.1L12 2.1Z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon" id="messagesBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+                <button class="nav-icon" id="createBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                </button>
+                <button class="nav-icon" id="exploreBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                    </svg>
+                </button>
+                <button class="nav-icon" id="notificationsBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                </button>
+                <button class="nav-icon profile-btn" id="profileBtn">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Profile" class="profile-avatar">
+                </button>
+                <button class="nav-icon" id="darkModeToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar__nav">
+                <a href="#" class="sidebar__link active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.1L21.9 12H20V21H15V16H9V21H4V12H2.1L12 2.1Z"/>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <span>Search</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                    </svg>
+                    <span>Explore</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    <span>Reels</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Messages</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                    <span>Notifications</span>
+                </a>
+                <a href="#" class="sidebar__link" id="createPost">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21,15 16,10 5,21"/>
+                    </svg>
+                    <span>Create</span>
+                </a>
+                <a href="#" class="sidebar__link">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Profile" class="sidebar__avatar">
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Stories Section -->
+            <section class="stories">
+                <div class="stories__container" id="storiesContainer">
+                    <div class="story story--add">
+                        <div class="story__avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" alt="Your story">
+                            <div class="story__add-btn">+</div>
+                        </div>
+                        <span class="story__username">Your story</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Posts Feed -->
+            <section class="feed" id="postsContainer">
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="suggestions">
+            <div class="suggestions__profile">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=face" alt="Your profile">
+                <div class="suggestions__profile-info">
+                    <span class="username">john_doe</span>
+                    <span class="display-name">John Doe</span>
+                </div>
+                <button class="btn-link">Switch</button>
+            </div>
+
+            <div class="suggestions__section">
+                <div class="suggestions__header">
+                    <span>Suggestions for you</span>
+                    <button class="btn-link">See All</button>
+                </div>
+                <div class="suggestions__list" id="suggestionsList">
+                </div>
+            </div>
+
+            <div class="suggestions__footer">
+                <p>About • Help • Press • API • Jobs • Privacy • Terms • Locations • Language</p>
+                <p>© 2025 Instagram Clone</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Story Modal -->
+    <div class="modal story-modal hidden" id="storyModal">
+        <div class="story-viewer">
+            <div class="story-viewer__header">
+                <div class="story-viewer__progress">
+                    <div class="progress-bar">
+                        <div class="progress-bar__fill"></div>
+                    </div>
+                </div>
+                <div class="story-viewer__info">
+                    <img src="" alt="Profile" class="story-viewer__avatar" id="storyAvatar">
+                    <span class="story-viewer__username" id="storyUsername"></span>
+                    <span class="story-viewer__time">2h</span>
+                </div>
+                <button class="story-viewer__close" id="closeStory">×</button>
+            </div>
+            <div class="story-viewer__content">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=600&fit=crop" alt="Story" class="story-viewer__image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal create-modal hidden" id="createModal">
+        <div class="create-post">
+            <div class="create-post__header">
+                <button class="btn-link" id="cancelCreate">Cancel</button>
+                <h3>Create new post</h3>
+                <button class="btn--primary" id="sharePost">Share</button>
+            </div>
+            <div class="create-post__content">
+                <div class="create-post__upload">
+                    <svg width="96" height="77" viewBox="0 0 96 77" fill="currentColor">
+                        <path d="M64 1.98v54.96h24L64 77.72V77h24C88 77 88 77 64 1.98v54.96z"/>
+                    </svg>
+                    <h3>Select photos and videos to share</h3>
+                    <button class="btn--primary">Select from computer</button>
+                </div>
+                <div class="create-post__form hidden">
+                    <div class="create-post__preview">
+                        <img src="" alt="Preview" id="previewImage">
+                    </div>
+                    <div class="create-post__details">
+                        <div class="create-post__user">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Profile">
+                            <span>john_doe</span>
+                        </div>
+                        <textarea placeholder="Write a caption..." class="create-post__caption" rows="5"></textarea>
+                        <input type="text" placeholder="Add location" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Like Animation -->
+    <div class="like-animation hidden" id="likeAnimation">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="red">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
